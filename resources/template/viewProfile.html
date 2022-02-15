@@ -1,0 +1,264 @@
+<div>
+    <div class="mt-4 text-center">
+        <button
+            id="downloadProfilePDFBtn"
+            type="button"
+            class="btn btn-outline-secondary mr-2"
+            disabled
+        >
+            Download
+        </button>
+        <button id="modifyProfileBtn" type="button" class="btn btn-primary">
+            Modify
+        </button>
+    </div>
+    <div class="mt-3">
+        <div class="card">
+            <div
+                class="card-header profile-card-header"
+                style="text-transform: uppercase; text-align: center"
+            >
+                Programme you have applied
+            </div>
+            <div id="programmeAppliedArea" class="card-body">
+                <p id="noProgrammeApplied" class="card-text text-center">
+                    No Programme
+                </p>
+                <div
+                    id="hasProgrammeApplied"
+                    class="row justify-content-center"
+                    style="display: none"
+                >
+                    <div class="col-auto">
+                        <img
+                            id="programmeThumb"
+                            src="/images/error-no-thumb.png"
+                            alt="hosp"
+                            style="width: 250px; height: 250px"
+                            />
+                    </div>
+                    <div
+                        class="col-auto align-self-center mt-3 mt-md-0 text-center text-md-start"
+                    >
+                        <h4 id="programmeName" class="fw-bold"></h4>
+                        <p></p>
+                        <p>Due Date: TBD</p>
+                        <p class="result">Result: TBD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div
+                class="card-header profile-card-header"
+                style="text-transform: uppercase; text-align: center"
+            >
+                Profile
+            </div>
+            <div class="card-body">
+                <div id="displayNoProfileData" class="text-center">
+                    No Profile
+                </div>
+                <div id="displayProfileData" style="display: none">
+                    <div class="row justify-content-center fs-4">
+                        <div class="col-auto mt-3 mt-md-0">
+                            <div class="p-2">
+                                <span class="mr-3 fw-bold fs-6">Name: </span>
+                                <span
+                                    id="profileName"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="mr-3 fw-bold fs-6"
+                                    >Date of Birth:</span
+                                >
+                                <span
+                                    id="profileBirthday"
+                                    class="text-secondary mr-5"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="mr-3 fw-bold fs-6">Age:</span>
+                                <span
+                                    id="profileAge"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="mr-3 fw-bold fs-6">Gender:</span>
+                                <span
+                                    id="profileGender"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="fw-bold fs-6 mr-3">
+                                    Phone Number: </span
+                                ><span
+                                    id="profilePhoneNumber"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="fw-bold fs-6 mr-3">
+                                    Constituency: </span
+                                ><span
+                                    id="profileConstituency"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="fw-bold fs-6 mr-3">
+                                    Home Address: </span
+                                ><span
+                                    id="profileHomeAddress"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="fw-bold fs-6 mr-3">
+                                    E-Mail Address: </span
+                                ><span
+                                    id="profileEmail"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="fw-bold fs-6 mr-3"
+                                    >Job Position:</span
+                                ><span
+                                    id="profileJobPosition"
+                                    class="text-secondary"
+                                ></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row fs-4 justify-content-end mt-4">
+                        <div class="row">
+                            <div class="col-12 fw-bold fs-6 p-2 text-center">
+                                If employed, what is the name of your
+                                organization?
+                            </div>
+                            <div
+                                id="profileOrganization"
+                                class="col-12 text-center text-secondary"
+                            ></div>
+                            <div class="col-12 fw-bold fs-6 p-2 text-center">
+                                If employed, which department or division do you
+                                work in, within your organization?
+                            </div>
+                            <div
+                                id="profileDepartment"
+                                class="col-12 text-secondary p-2 text-center"
+                            ></div>
+                            <div class="col-12 fw-bold fs-6 p-2 text-center">
+                                Please indicate your reason(s) for applying to
+                                this programme.
+                            </div>
+                            <div
+                                id="profileObjective"
+                                class="col-12 text-secondary p-2 text-center"
+                            ></div>
+                        </div>
+
+                        <div class="col-12 text-center p-2 fw-bold fs-6">
+                            Do you have any previous training with Taiwan ICDF?
+                        </div>
+                        <div
+                            id="profileIcdfTraining"
+                            class="col-12 p-2 text-secondary text-center"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 p-2 text-center">
+                            If yes, what is the training program title?
+                        </div>
+                        <div
+                            id="profileIcdfProgramTitle"
+                            class="col-12 text-secondary p-2 text-center"
+                        ></div>
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            If yes, what is the training program period?
+                        </div>
+                        <div
+                            id="profileicdfTrainingPeorid"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            School Name:
+                        </div>
+                        <div
+                            id="profileSchool"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            Subject:
+                        </div>
+                        <div
+                            id="profileSubject"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            Qualifications:
+                        </div>
+                        <div
+                            id="profileQualifications"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            Do you have any related job experience?
+                        </div>
+                        <div
+                            id="profileRelatedJobExperience"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            If yes, please specify.
+                        </div>
+                        <div
+                            id="profileRelatedJobDescription"
+                            class="col-12 text-secondary text-center p-2"
+                        ></div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            National ID Card:
+                        </div>
+                        <div class="col-12 text-secondary text-center p-2">
+                            <img
+                                id="profileNationalIdCard"
+                                class="ui-nationalIdCard ui-profile-photo"
+                                src="/images/national-id-card-default.png"
+                                alt="National ID Card"
+                            />
+                        </div>
+
+                        <div class="col-12 fw-bold fs-6 text-center p-2">
+                            Recommendation:
+                        </div>
+                        <div id="profileNoRecommendation" class="col-12 text-secondary text-center p-2">N/A</div>
+                        <div
+                            id="profileRecommendationDownload"
+                            class="col-12 text-center"
+                            style="display: none"
+                        >
+                            <a
+                                id="downloadRecommendationLink"
+                                download="Recommendation.pdf"
+                                style="display: none"
+                            ></a>
+                            <button id="downloadRecommendation" type="button" class="btn btn-info">
+                                Download
+                            </button>
+                            <button id="removeRecommendation" type="button" class="ml-1 btn btn-outline-secondary">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

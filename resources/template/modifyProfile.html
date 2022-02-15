@@ -1,0 +1,453 @@
+<div class="mt-5">
+    <form
+        name="profileForm"
+        id="profileForm"
+        class="row g-3 needs-validation"
+        novalidate
+    >
+        <button id="hiddenSubmit" type="submit" hidden>Submit</button>
+        <h1 class="pt-5">Programme</h1>
+        <div class="col-sm-12 col-md-9 col-lg-6">
+            <label class="form-label"
+                >Which programme you would like to apply to?</label
+            >
+            <select
+                id="modifyPanelProgrammeSelect"
+                class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg programme"
+            ></select>
+        </div>
+
+        <h1>Personal Data</h1>
+
+        <div class="col-md-4">
+            <label for="givenName" class="form-label">Given Name</label>
+            <input type="text" class="form-control" id="givenName" required />
+            <div class="invalid-feedback">Please provide your given name.</div>
+        </div>
+        <div class="col-md-4">
+            <label for="middleName" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="middleName" />
+        </div>
+        <div class="col-md-4">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="lastName" required />
+            <div class="invalid-feedback">Please provide your last name.</div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <label class="form-label">Constituency</label>
+            <select
+                id="constituencySelect"
+                class="form-select"
+                aria-label="constituency"
+            ></select>
+        </div>
+
+        <div class="col-12"></div>
+
+        <div class="col-12 row">
+            <label class="col-12 form-label">Date of Birth</label>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label class="form-label">Year</label>
+                <select
+                    id="yearOfBirth"
+                    class="form-select"
+                    aria-label="Year of Birth "
+                ></select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label class="form-label">Month</label>
+                <select
+                    id="monthOfBirth"
+                    class="form-select"
+                    aria-label="Month of Birth "
+                ></select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <label class="form-label">Day</label>
+                <select
+                    id="dayOfBirth"
+                    class="form-select"
+                    aria-label="Day of Birth "
+                ></select>
+            </div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-md-8">
+            <div>
+                <label class="form-label">Gender</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    value="Male"
+                    required
+                />
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="Female"
+                    required
+                />
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="gender"
+                    id="Rather"
+                    value="Rather not say"
+                    required
+                />
+                <label class="form-check-label" for="Rather"
+                    >Rather not say</label
+                >
+            </div>
+            <div class="invalid-feedback">Please choose your gender.</div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-md-6">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" required />
+            <div class="invalid-feedback">
+                Please provide your phone number.
+            </div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-md-6">
+            <label for="homeAddress" class="form-label">Home Address</label>
+            <input type="text" class="form-control" id="homeAddress" required />
+            <div class="invalid-feedback">
+                Please provide your home address.
+            </div>
+        </div>
+        <div class="col-auto"></div>
+
+        <!-- <div class="col-md-6">
+            <label for="emailAddress" class="form-label">E-Mail Address</label>
+            <input
+                type="email"
+                class="form-control"
+                id="emailAddress"
+                aria-describedby="emailHelp"
+                required
+            />
+            <div class="invalid-feedback">Please provide a valid E-Mail.</div>
+        </div>
+        <div class="col-auto"></div> -->
+
+        <div class="col-md-8">
+            <label class="form-label">Job Position</label>
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="jobPosition"
+                    id="employed"
+                    value="Currently Employed"
+                    checked
+                    required
+                />
+                <label class="form-check-label" for="employed">
+                    Currently Employed
+                </label>
+            </div>
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="jobPosition"
+                    id="unemployment"
+                    value="Currently Unemployment"
+                    required
+                />
+                <label class="form-check-label" for="unemployment">
+                    Currently Unemployment
+                </label>
+            </div>
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="jobPosition"
+                    id="partTime"
+                    value="Part-Time Employment"
+                    required
+                />
+                <label class="form-check-label" for="partTime">
+                    Part-Time Employment
+                </label>
+            </div>
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="jobPosition"
+                    id="selfEmployed"
+                    value="Self-employed"
+                    required
+                />
+                <label class="form-check-label" for="selfEmployed">
+                    Self-employed
+                </label>
+            </div>
+            <div class="invalid-feedback">Please choose your job position.</div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label"
+                >If employed, what is the name of your organization?</label
+            >
+            <input type="text" class="form-control" id="organization" />
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label"
+                >If employed, which department or division do you work in,
+                within your organization?</label
+            >
+            <p>For example: Accounting, Human Resources, etc.</p>
+            <input type="text" class="form-control" id="department" />
+        </div>
+        <div class="col-auto"></div>
+
+        <h1>Purpose of Application</h1>
+
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label"
+                >Please indicate your reason(s) for applying to this
+                programme.</label
+            >
+            <textarea
+                class="form-control"
+                id="objective"
+                rows="8"
+                required
+            ></textarea>
+        </div>
+        <div class="col-auto"></div>
+
+        <h1>Previous training with Taiwan ICDF</h1>
+
+        <div class="col-sm-12 col-md-8 col-lg-8">
+            <div>
+                <label class="form-label"
+                    >Do you have any previous training with Taiwan ICDF?</label
+                >
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="icdfTraining"
+                    id="icdfYes"
+                    value="Yes"
+                    required
+                />
+                <label class="form-check-label" for="icdfYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="icdfTraining"
+                    id="icdfNo"
+                    value="No"
+                    required
+                />
+                <label class="form-check-label" for="icdfNo">No</label>
+            </div>
+            <div class="invalid-feedback">
+                Please choose confirm this question.
+            </div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label"
+                >If yes, what is the training program title?</label
+            >
+            <input type="text" class="form-control" id="icdfProgramTitle" />
+        </div>
+        <div class="col-12"></div>
+
+        <div class="col-12 row">
+            <label class="form-label col-12"
+                >If yes, what is the training program period?</label
+            >
+            <div class="col-sm-12 col-md-auto">
+                <label class="form-label">Training start from</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <input type="date" class="form-control" id="icdfTrainingFrom" />
+            </div>
+            <div class="col-sm-12 col-md-auto">
+                <label class="form-label">to</label>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <input type="date" class="form-control" id="icdfTrainingTo" />
+            </div>
+        </div>
+
+        <h1 class="col-12">Education and Training</h1>
+        <p class="col-12">Highest Diploma Only</p>
+
+        <div class="col-md-6">
+            <label for="schoolName" class="form-label">School Name</label>
+            <input type="text" class="form-control" id="schoolName" required />
+            <div class="invalid-feedback">Please provide your school name.</div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-md-6">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" required />
+            <div class="invalid-feedback">Please provide your subject.</div>
+        </div>
+        <div class="col-auto"></div>
+
+        <div class="col-md-9">
+            <label for="qualifications" class="form-label"
+                >Qualifications</label
+            >
+            <textarea
+                class="form-control"
+                id="qualifications"
+                rows="5"
+                required
+            ></textarea>
+        </div>
+        <div class="col-auto"></div>
+
+        <h1>Related Employment/Job Experience</h1>
+
+        <div class="col-md-8">
+            <div>
+                <label class="form-label"
+                    >Do you have any related job experience?</label
+                >
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="relatedJobExperience"
+                    id="relatedJobYes"
+                    value="Yes"
+                    required
+                />
+                <label class="form-check-label" for="relatedJobYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="relatedJobExperience"
+                    id="relatedJobNo"
+                    value="No"
+                    required
+                />
+                <label class="form-check-label" for="relatedJobNo">No</label>
+            </div>
+            <div class="invalid-feedback">Please confirm this question.</div>
+        </div>
+        <div class="col-12"></div>
+
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label">If yes, please specify.</label>
+            <textarea
+                class="form-control"
+                id="relatedJobDescription"
+                rows="5"
+            ></textarea>
+        </div>
+        <div class="col-12"></div>
+
+        <h1>Additional Files</h1>
+        <div class="col-sm-12 col-md-9 col-lg-9">
+            <label class="form-label" id="nidlabel"
+                >Please upload a photo of your National ID Card.</label
+            >
+        </div>
+        <div class="col-12"></div>
+
+        <div class="col-sm-12 col-md-9 col-lg-9 row">
+            <div class="col-auto">
+                <img
+                    id="nationalIdCardPhoto"
+                    class="ui-nationalIdCard"
+                    src="../assets/national-id-card-default.png"
+                />
+            </div>
+            <div class="col-auto align-self-center mt-2">
+                <input
+                    type="file"
+                    id="chooseNationalIdCardPhoto"
+                    accept="image/*"
+                    hidden
+                />
+                <label
+                    for="chooseNationalIdCardPhoto"
+                    class="ml-3 btn btn-outline-primary"
+                    >Choose photo</label
+                >
+                <div id="national-id-card-warning" class="invalid-feedback">
+                    Please provide your National ID Card.
+                </div>
+            </div>
+        </div>
+        <div class="col-12"></div>
+
+        <!-- accept="application/pdf,application/msword, -->
+        <!-- application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/* " -->
+        <h1>Recommendation</h1>
+        <div class="col-9">
+            <label class="form-label"
+                >Please upload the recommendation file if any. (PDF or
+                Image)</label
+            >
+            <div>
+                <input
+                    class="form-control form-control-lg"
+                    id="recommendation"
+                    type="file"
+                    accept="application/pdf, image/* "
+                />
+            </div>
+        </div>
+        <div class="col-auto"></div>
+    </form>
+    <div class="btn-tray-bg row justify-content-center">
+        <div class="col-auto">
+            <button
+                id="cancelModifyProfileBtn"
+                type="button"
+                class="btn btn-lg btn-outline-secondary mr-1"
+            >
+                Cancel
+            </button>
+            <button
+                id="updateProfileBtn"
+                class="btn btn-lg btn-primary"
+                type="submit"
+            >
+                Save
+            </button>
+        </div>
+    </div>
+</div>
