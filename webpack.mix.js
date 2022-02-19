@@ -16,3 +16,4 @@ mix.js("resources/js/app.js", "public/js")
     .sourceMaps();
 
 mix.js("resources/js/member.js", "public/js");
+mix.js("resources/js/admin.js", "public/js");

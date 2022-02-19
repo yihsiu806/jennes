@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Profile extends Model
 {
@@ -37,4 +38,9 @@ class Profile extends Model
         'nationalIDCard',
         'recommendation',
     ];
+
+    public function age()
+    {
+        return Carbon::parse($this->attributes['dateOfBirth'])->age;
+    }
 }

@@ -24,10 +24,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes(['verify' => true]);
 
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(['verified', 'role:admin']);
+Route::get('/users', 'App\Http\Controllers\AdminController@getUsers')->middleware(['verified', 'role:admin']);
+Route::get('/candidates', 'App\Http\Controllers\AdminController@getCandidates')->middleware(['verified', 'role:admin']);
+Route::get('/export', 'App\Http\Controllers\AdminController@getExport')->middleware(['verified', 'role:admin']);
 Route::get('/member', 'App\Http\Controllers\MemberController@index')->middleware(['verified', 'role:member']);
 Route::post('/profile', 'App\Http\Controllers\ProfileController@store')->middleware(['verified', 'role:member']);
 Route::patch('/profile/{uid}', 'App\Http\Controllers\ProfileController@update')->middleware(['verified', 'role:member']);
 Route::delete('/profile/recommendation', 'App\Http\Controllers\ProfileController@deleteRecommendation')->middleware(['verified', 'role:member']);
+Route::patch('/user/password', 'App\Http\Controllers\UserController@changePassword')->middleware(['verified']);
 Route::delete('/user', 'App\Http\Controllers\UserController@deleteUser')->middleware(['verified', 'role:member']);
 
 Route::get('/email/verify', function () {
@@ -45,3 +49,5 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::patch('/score', 'App\Http\Controllers\RatingController@update')->middleware(['verified', 'role:admin']);

@@ -1,0 +1,330 @@
+<div class="admin-panel">
+
+  <div class="my-4">
+    <h5>Welcome to the ePortal, <span id="adminName"></span></h5>
+  </div>
+
+  <ul class="nav nav-tabs" id="adminTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="dashboard-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#dashboard-content"
+        type="button"
+        role="tab"
+        aria-controls="dashboard-content"
+        aria-selected="true"
+      >
+        Dashboard
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="users-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#users-content"
+        type="button"
+        role="tab"
+        aria-controls="users-content"
+        aria-selected="false"
+      >
+        Users
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="candidate-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#candidate-content"
+        type="button"
+        role="tab"
+        aria-controls="candidate-content"
+        aria-selected="false"
+      >
+      Candidates
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="settings-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#settings-content"
+        type="button"
+        role="tab"
+        aria-controls="settings-content"
+        aria-selected="false"
+      >
+      Settings
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="adminTabContent">
+    <div
+      class="tab-pane fade"
+      id="dashboard-content"
+      role="tabpanel"
+      aria-labelledby="dashboard-tab"
+    >
+      <div class="row row-cols-auto my-2" style="padding-top: 24px">
+        <div>
+          <div class="info-box">
+            <span class="info-box-icon bg-info"
+              ><i class="bi bi-people-fill"></i
+            ></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><span class="mr-1">Total Users</span><i
+              class="bi bi-info-circle text-secondary"
+              data-bs-container="body"
+              data-bs-toggle="popover"
+              data-bs-placement="top"
+              data-bs-content="Users that have registered."
+            ></i></span>
+              <span id="totalUsers" class="info-box-number"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="info-box">
+            <span class="info-box-icon bg-info"
+              ><i class="bi bi-file-earmark-person-fill"></i></i
+            ></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><span class="mr-1">Total Candidates</span><i
+              class="bi bi-info-circle text-secondary"
+              data-bs-container="body"
+              data-bs-toggle="popover"
+              data-bs-placement="top"
+              data-bs-content="Users that have sent out an application."
+            ></i></span>
+              <span id="totalCandidates" class="info-box-number"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Analysis</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Programmes</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="programmeAnalysis" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Constituency</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="constituencyAnalysis" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Age</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="ageAnalysis" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Gender</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="genderAnalysis" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Job Position</h3>
+            </div>
+            <div class="card-body">
+              <canvas id="jobAnalysis" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="users-content"
+      role="tabpanel"
+      aria-labelledby="users-tab"
+    >
+      <div style="margin-top: 24px">
+        <table id="allUsers" class="display table table-striped table-hover" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Uid</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th>Uid</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade show active"
+      id="candidate-content"
+      role="tabpanel"
+      aria-labelledby="candidate-tab"
+    >
+      <div style="margin-top: 24px">
+        <div class="alert alert-info" role="alert">
+          Double click to view detail.
+        </div>
+        <div class="alert alert-info" role="alert">
+          When download Excel, do not select any row or you will only download that row.
+        </div>
+        <div class="text-center mt-4">
+          <button id="exportBtn" type="button" class="btn btn-lg btn-primary">Export</button>
+        </div>
+
+        <table id="allCandidates" class="display table table-striped table-hover" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Uid</th>
+              <th>Programme</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Constituency</th>
+              <th>Job Position</th>
+              <th>Created</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th>Uid</th>
+              <th>Programme</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Constituency</th>
+              <th>Job Position</th>
+              <th>Created</th>
+              <th>Score</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="settings-content"
+      role="tabpanel"
+      aria-labelledby="settings-tab"
+    >
+    <div style="max-width: 490px;">
+      <h1 class="mb-3 mt-5">
+        <span class="highlight">
+          Change Password
+        </span>
+      </h1>
+      <div>
+        <form id="modifyPassword">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Current Password</label>
+              <input type="password" class="form-control" id="currentPassword" minlength="8" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input type="password" class="form-control" id="newPassword" minlength="2" aria-describedby="emailHelp" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Change</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+</div>
+
+<div id="candidateDetailModal">
+  <div class="close-wrapper row justify-content-end align-items-center">
+    <span class="col-auto mr-4">
+      <fieldset class="rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+      </fieldset>
+    </span>
+    
+    <button id="downloadCandidate" type="button" class="col-auto mr-3 btn btn-dark">
+      Download
+    </button>
+    <button id="closeCandidate" type="button" class="col-auto close-candidate-dialog btn btn-dark">
+      Close
+    </button>
+    
+  </div>
+  <div class="page-arrow page-arrow-left">
+    <i id="previousCandidate" class="bi bi-caret-left-fill"></i>
+  </div>
+  <div class="page-arrow page-arrow-right">
+    <i id="nextCandidate" class="bi bi-caret-right-fill"></i>
+  </div>
+  
+  <div class="dialog-wrapper">
+    <div class="row">
+      <span class="col-auto">
+        <span>Uid: </span><span id="candidateUid"></span>
+      </span>
+      <span class="col row justify-content-end">
+        <div class="col-auto">
+          <span>Created: </span><span id="candidateCreated" class="mr-3"></span>
+        </div>
+        <div class="col-auto">
+          <span>Updated: </span><span id="candidateModified"></span>
+        </div>
+      </span>
+    </div>
+    <article id="candidateDialog" class="dialog">
+
+    </article>
+  </div>
+</div>
+
+<div id="smalLoading">
+  <span>Loading...</span>
+</div>

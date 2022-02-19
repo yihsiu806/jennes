@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Karla&display=swap);
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @font-face {
   font-family: "bootstrap-icons";
   src: url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff2?a13b815539b49de48d2358b4281b2f1a) format("woff2"),
@@ -13043,6 +13044,18 @@ body {
   width: 350px;
 }
 
+.ui-recommendation {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 3px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 100%;
+  width: 600px;
+}
+
 h2.break-heading, .break-heading.h2 {
   text-align: center;
   position: relative;
@@ -13189,4 +13202,167 @@ form h1, form .h1 {
     transform: scaleY(1);
     -webkit-transform: scaleY(1);
   }
+}
+#adminName {
+  color: #448AFF;
+}
+
+#candidateDetailModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 3000;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#candidateDetailModal .dialog-wrapper {
+  padding: 64px 40px;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  margin-top: 110px;
+}
+
+#candidateDetailModal .close-wrapper {
+  position: fixed;
+  top: 24px;
+  right: 60px;
+  z-index: 3003;
+}
+
+#candidateDetailModal .close-candidate-dialog {
+  font-size: 28px;
+}
+
+.page-arrow {
+  z-index: 3001;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  font-size: 48px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-arrow-left {
+  left: 30px;
+}
+
+.page-arrow-right {
+  right: 36px;
+}
+
+.dialog-wrapper {
+  background-color: #fff;
+  margin-right: 76px;
+  margin-left: 90px;
+  margin-bottom: 61px;
+  z-index: 3002;
+  min-height: 600px;
+}
+
+#candidateDialog table {
+  width: 100%;
+}
+
+#candidateDialog table td,
+#candidateDialog table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#candidateDialog table tr td:first-child:not([colspan="2"]) {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  width: 220px;
+}
+
+#candidateDialog table tr td.dark {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+#previousCandidate,
+#nextCandidate {
+  cursor: pointer;
+}
+
+.disable-arrow {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+#allCandidates tr td {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.highlight {
+  background-image: linear-gradient(180deg, transparent 60%, #ffca80 0);
+}
+
+/****** Style Star Rating Widget *****/
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+  font-size: 28px;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffd700;
+}
+
+/* hover previous stars in list */
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #ffed85;
+}
+
+#smalLoading {
+  display: inline-block;
+  position: fixed;
+  top: 16px;
+  right: 24px;
+  background-color: #039BE5;
+  color: white;
+  padding: 5px 12px;
+  font-weight: bold;
 }

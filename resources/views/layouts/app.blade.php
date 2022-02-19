@@ -25,11 +25,12 @@
     <div id="app">
         <!-- Authentication Links -->
         <div class="container">
-            <div class="row justify-content-end" style="margin-top: 120px;">
+            <div class="row justify-content-end align-items-center" style="margin-top: 120px;">
                 @guest
                 @if (Route::has('register'))
                 @endif
                 @else
+                <div id="helloMsg" class="col-auto"></div>
                 <div class="col-auto">
                     <a class="btn btn-secondary btn-lg" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

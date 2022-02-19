@@ -225,7 +225,7 @@ export function genDocDefinition(profile) {
             ],
             [
               { text: 'E-Mail Address', style: 'tableHeader' },
-              { text: user.email },
+              { text: profile.email },
             ],
             [
               { text: 'Job Position', style: 'tableHeader' },
@@ -444,6 +444,9 @@ function getBase64ImageFromURL(url) {
 }
 
 function getBase64Image(img) {
+  if (!img) {
+    return errorImageBase64;
+  }
   var canvas = document.createElement("canvas");
   canvas.width = img.width;
   canvas.height = img.height;
@@ -462,11 +465,7 @@ export function format(profile, id) {
       <thead></thead>
 
       <tbody>
-        <tr>
-          <td rowspan="5"><img src="${
-            profile.photo == 'no photo' ? noPhotoBase64 : profile.photo
-          }" class="ui-cv-photo"></td>
-        </tr>
+        
 
         <tr>
           <td>Name</td>
@@ -487,83 +486,83 @@ export function format(profile, id) {
 
         <tr>
           <td>Gender</td>
-          <td colspan="2">${profile.gender}</td>
+          <td>${profile.gender}</td>
         </tr>
         <tr>
           <td>Phone Number</td>
-          <td colspan="2">${profile.phoneNumber}</td>
+          <td>${profile.phoneNumber}</td>
         </tr>
 
         <tr>
           <td>Constituency</td>
-          <td colspan="2">${profile.constituency}</td>
+          <td>${profile.constituency}</td>
         </tr>
 
         <tr>
           <td>Home Address</td>
-          <td colspan="2">${profile.homeAddress}</td>
+          <td>${profile.homeAddress}</td>
         </tr>
 
         <tr>
           <td>E-Mail Address</td>
-          <td colspan="2">${profile.emailAddress}</td>
+          <td>${profile.email}</td>
         </tr>
 
         <tr>
           <td>Job Position</td>
-          <td colspan="2">${profile.jobPosition}</td>
+          <td>${profile.jobPosition}</td>
         </tr>
 
         <tr>
-          <td colspan="3">If employed, what is the name of your organization?</td>
+          <td colspan="2" class="dark">If employed, what is the name of your organization?</td>
         </tr>
 
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.organization ? profile.organization : 'N/A'
           }</td>
         </tr>
 
         <tr>
-          <td colspan="3">If employed, which department or division do you work in, within your organization?</td>
+          <td colspan="2" class="dark">If employed, which department or division do you work in, within your organization?</td>
         </tr>
 
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.department ? profile.department : 'N/A'
           }</td>
         </tr>
         
         <tr>
           <td>programme:</td>
-          <td colspan="2">${profile.programme}</td>
+          <td>${profile.programme}</td>
         </tr>
         
         <tr>
-          <td colspan="3">Please indicate your reason(s) for applying to this programme.</td>
+          <td colspan="2" class="dark">Please indicate your reason(s) for applying to this programme.</td>
         </tr>
         <tr>
-          <td colspan="3">${profile.objective}</td>
+          <td colspan="2">${profile.objective}</td>
         </tr>
         <tr>
-          <td colspan="3">Do you have any previous training with Taiwan ICDF?</td>
+          <td colspan="2" class="dark">Do you have any previous training with Taiwan ICDF?</td>
         </tr>
         <tr>
-          <td colspan="3">${profile.icdfTraining}</td>
+          <td colspan="2">${profile.icdfTraining}</td>
         </tr>
         <tr>
-          <td colspan="3">If yes, what is the training program title?</td>
+          <td colspan="2" class="dark">If yes, what is the training program title?</td>
         </tr>
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.icdfProgramTitle ? profile.icdfProgramTitle : 'N/A'
           }</td>
         </tr>
         <tr>
-          <td colspan="3">If yes, what is the training program period?</td>
+          <td colspan="2" class="dark">If yes, what is the training program period?</td>
         </tr>
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.icdfTrainingFrom && profile.icdfTrainingTo
               ? `${profile.icdfTrainingFrom} ~ ${profile.icdfTrainingTo}`
               : 'N/A'
@@ -571,45 +570,45 @@ export function format(profile, id) {
         </tr>
         <tr>
           <td>School Name</td>
-          <td colspan="2">${profile.schoolName}</td>
+          <td>${profile.schoolName}</td>
         </tr>
         <tr>
           <td>Subject</td>
-          <td colspan="2">${profile.subject}
+          <td>${profile.subject}
         </tr>
         <tr>
           <td>Qualifications</td>
-          <td colspan="2">${profile.qualifications}</td>
+          <td>${profile.qualifications}</td>
         </tr>
         <tr>
-          <td colspan="3">Do you have any related job experience?</td>
+          <td colspan="2" class="dark">Do you have any related job experience?</td>
         </tr>
         <tr>
-          <td colspan="3">${profile.relatedJobExperience}</td>
+          <td colspan="2">${profile.relatedJobExperience}</td>
         </tr>
         <tr>
-          <td colspan="3">If yes, please specify.</td>
+          <td colspan="2" class="dark">If yes, please specify.</td>
         </tr>
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.relatedJobDescription
               ? profile.relatedJobDescription
               : 'N/A'
           }</td>
         </tr>
         <tr>
-          <td colspan="3">National ID Card</td>
+          <td colspan="2" class="dark">National ID Card</td>
         </tr>
         <tr>
-          <td colspan="3"><img src="${
+          <td colspan="2"><img src="${
             profile.nationIdCard
           }" class="ui-nationalIdCard"></td>
         </tr>
         <tr>
-          <td colspan="3">Recommendation</td>
+          <td colspan="2" class="dark">Recommendation</td>
         </tr>
         <tr>
-          <td colspan="3">${
+          <td colspan="2">${
             profile.recommendationName ? profile.recommendationName : 'N/A'
           }</td>
         </tr>
@@ -619,25 +618,26 @@ export function format(profile, id) {
   `;
 
   function showRecommendation(profile) {
-    if (profile.recommendationName && profile.recommendation) {
-      if (/^data:application\/pdf/.test(profile.recommendation)) {
-        return `
-      <tr>
-        <td colspan="3">
-        <embed src="${profile.recommendation}" type="application/pdf" width="100%" height="600px" navpanes="0" />
-        </td>
-      </tr>
-      `;
-      } else if (/^data:image\//.test(profile.recommendation)) {
-        return `
-      <tr>
-        <td colspan="3">
-        <img src="${profile.recommendation}" class="ui-recommendation">
-        </td>
-      </tr>
-      `;
-      }
+    if (!profile.recommendation) {
+      return '';
+    } else if (profile.recommendation && profile.recommendation.split('.').pop() == 'pdf') {
+      return `
+        <tr>
+          <td colspan="3">
+          <embed src="${profile.recommendation}" type="application/pdf" width="100%" height="600px" navpanes="0" />
+          </td>
+        </tr>
+        `;
+    } else if (profile.recommendation) {
+      return `
+        <tr>
+          <td colspan="3">
+          <img src="${profile.recommendation}" class="ui-recommendation">
+          </td>
+        </tr>
+        `;
     }
-    return '';
   }
 }
+
+const errorImageBase64 = 'data:image/jpeg;base64,/9j/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAABgAAAAAQAAAGAAAAABAAAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAQAAQAAAGQAAAADoAQAAQAAAGQAAAAAAAAA/+EN9Gh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4KPHg6eG1wbWV0YSB4bWxuczp4PSdhZG9iZTpuczptZXRhLyc+CjxyZGY6UkRGIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyc+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpBdHRyaWI9J2h0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8nPgogIDxBdHRyaWI6QWRzPgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxBdHRyaWI6Q3JlYXRlZD4yMDIyLTAyLTE5PC9BdHRyaWI6Q3JlYXRlZD4KICAgICA8QXR0cmliOkV4dElkPjRkZmUyMjU4LWE3ODAtNGZkMC05YWE2LTVkNDcxYTg1Y2QzNjwvQXR0cmliOkV4dElkPgogICAgIDxBdHRyaWI6RmJJZD41MjUyNjU5MTQxNzk1ODA8L0F0dHJpYjpGYklkPgogICAgIDxBdHRyaWI6VG91Y2hUeXBlPjI8L0F0dHJpYjpUb3VjaFR5cGU+CiAgICA8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwvQXR0cmliOkFkcz4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6dGl0bGU+CiAgIDxyZGY6QWx0PgogICAgPHJkZjpsaSB4bWw6bGFuZz0neC1kZWZhdWx0Jz5Jbml0aWFsIEZhc2hpb24gTG9nbzwvcmRmOmxpPgogICA8L3JkZjpBbHQ+CiAgPC9kYzp0aXRsZT4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6cGRmPSdodHRwOi8vbnMuYWRvYmUuY29tL3BkZi8xLjMvJz4KICA8cGRmOkF1dGhvcj5ZaWhzaXUgQ2hlbjwvcGRmOkF1dGhvcj4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6eG1wPSdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvJz4KICA8eG1wOkNyZWF0b3JUb29sPkNhbnZhPC94bXA6Q3JlYXRvclRvb2w+CiA8L3JkZjpEZXNjcmlwdGlvbj4KPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0ndyc/Pv/bAEMABgQFBgUEBgYFBgcHBggKEAoKCQkKFA4PDBAXFBgYFxQWFhodJR8aGyMcFhYgLCAjJicpKikZHy0wLSgwJSgpKP/bAEMBBwcHCggKEwoKEygaFhooKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKP/AABEIAGQAZAMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APp+iiioGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABQAT0BNFeFfHl9IPxD8GQ+KNRuNP0KS3uvtMsU7xYxjbyvP3sDp3oQHupBHUEfhQAT0BNeUfCLTvAA1q8u/A+uXmp3cUHlzLLeyzKiOwwdrgDOV61k/FnTrDWvjF4T0zW76e00uXTLl5GjuzbfMrZX5gR3osFz2368UAE9ATXjvwcu2tPHni3w5pOsXOs+GbCOGW2nnm88wSt96ISdx1/L61U+LOnWGtfGLwnpmt309ppcumXLyNHdm2+ZWyvzAjvRYVz2368UV478HLtrTx54t8OaTrFzrPhmwjhltp55vPMErfeiEncdfy+tXfiFeap4n+IOn+A9J1GfS7E2Z1HVLq2bbM0W7asSN2z3Pv7YJYdz1XB9DRXini74fv8AD/QrnxP4C1XVLa+01PtE9rdXbTw3kS/fV1bvjJz/AC613+qasmtfCy91e2DRJeaPJcoM8puhJxn1H9KAOswe4P5UV8oLa6b4d+EmieLdE8T39v4wZIHFsNRMondnw0ZhJPGOf/119VWjySWsLzp5crIrOn91iBkfgc0NAS0UUUAFeR/Fmx1dPiF4R1zTvDN14gs7CC5WeCEJjLjCg7uO+enavXKTAoQHBeBvEGpX+sNa3Pw+vvDsDRMzXcphCkjopCDJzk1kePvBY8U/FvwzLquj/wBoeHodPuEuWkXMSyE5QNznOeleqYHpRRcDy/4XeH9S8C+J9b8Npp8snhm4c32n6gqjEZPDQSHrkdifT3qPx94LHin4t+GZdV0f+0PD0On3CXLSLmJZCcoG5znPSvVKKLhY8v8Ahd4f1LwL4n1vw2mnyyeGbhzfafqCqMRk8NBIeuR2J9Pep/iJ4b1238Wab418GRQ3eq2kDWd3p8r7BeW5OcK3Zgf6emD6TS0XA8a8RX/jj4iaY/h218KXfhiwu8R3+oajMjFYs/MsaryxPTP8uteh6xo62vw/vtG0qF3WLTJLS3iHLNiIqo+p4roaWgLHzxbfCq50r4feFfEOgaJHB430kR3NzauoLXhB+aNwTjdjkH6+1e/abcve6fbXMltNavNGrtBMMPESOVb3HSrFLRcAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z';

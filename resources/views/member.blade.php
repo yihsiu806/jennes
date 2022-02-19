@@ -22,7 +22,7 @@
 @section('bundle')
 <script>
     let user = JSON.parse('{!! json_encode($user, JSON_HEX_TAG) !!}');
-    let profile = JSON.parse('{!! json_encode($profile, JSON_HEX_TAG) !!}');
+    let profile = JSON.parse(`{!! json_encode($profile, JSON_HEX_TAG) !!}`);
 </script>
 
 <script src="{!! asset('js/member.js') !!}"></script>
