@@ -2,16 +2,16 @@
 :root {
     --icdf_green: #009944;
     --icdf_blue: #00a0e9;
-    --icdf_darkblue: #0070a3;
+    --icdf_darkblue: #0070A3;
     --icdf_ygreen: #8ec31f;
     --taiwan_blue: #2a3086;
     --taiwan_red: #ec1d23;
     --lucian_blue: #61c1f2;
     --lucian_gold: #f0c615;
     --salcc_green: #224d07;
-    --citrine_yellow: #e0d500;
+    --citrine_yellow: #E0D500;
     --lavender: #fdeced;
-    --faded_black: rgba(0, 0, 0, 0.55);
+    --faded_black: rgba(0,0,0,0.55);
 }
 
 html {
@@ -25,13 +25,11 @@ a:active {
     text-decoration: none;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     letter-spacing: -1.25px;
 }
 
-/* nav */
+  /* nav */
 
 #navLogo {
     height: auto;
@@ -43,7 +41,7 @@ hr.divider {
 
 .mast_minor-btn {
     background-color: transparent;
-    border-color: #fff;
+    border: 1px solid #fff !important;
     color: #fff;
 }
 
@@ -64,8 +62,7 @@ hr.divider {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#pageTopButton:hover,
-#pageTopButton:active {
+#pageTopButton:hover, #pageTopButton:active {
     text-decoration: none;
     color: var(--taiwan_blue);
     background-color: #fff;
@@ -93,7 +90,9 @@ hr.divider {
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
-    box-shadow: 0px 0px 0px 5px #fff, 0px 0px 0px 10px var(--icdf_ygreen);
+    box-shadow:
+        0px 0px 0px 5px #fff,
+        0px 0px 0px 10px var(--icdf_ygreen);
     pointer-events: none;
 }
 
@@ -104,7 +103,7 @@ hr.divider {
 }
 
 #about .row .card .card-body p.card-text {
-    opacity: 0.8;
+    opacity: .8;
 }
 
 #about .line {
@@ -145,12 +144,7 @@ hr.divider {
 /* programmes */
 
 /* programme caption hover bg */
-#programmes .container .portfolio-box .portfolio-box-caption,
-#programmes .container-sm .portfolio-box .portfolio-box-caption,
-#programmes .container-md .portfolio-box .portfolio-box-caption,
-#programmes .container-lg .portfolio-box .portfolio-box-caption,
-#programmes .container-xl .portfolio-box .portfolio-box-caption,
-#programmes .container-xxl .portfolio-box .portfolio-box-caption {
+#programmes .container .portfolio-box .portfolio-box-caption, #programmes .container-sm .portfolio-box .portfolio-box-caption, #programmes .container-md .portfolio-box .portfolio-box-caption, #programmes .container-lg .portfolio-box .portfolio-box-caption, #programmes .container-xl .portfolio-box .portfolio-box-caption, #programmes .container-xxl .portfolio-box .portfolio-box-caption {
     background-color: rgba(42, 48, 134, 0.75);
 }
 
@@ -192,7 +186,7 @@ footer > .container-fluid {
 
 footer #copyrightBlurb {
     color: #000;
-    opacity: 0.75;
+    opacity: .75;
 }
 
 footer section,

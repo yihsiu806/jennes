@@ -113,7 +113,7 @@ class ProfileController extends Controller
             $relatedJobDescription = null;
         }
 
-        $profile = Profile::create([
+        $profile = [
             'uid' => $user->id,
             'givenName' => $request->input('givenName'),
             'middleName' =>  $middleName,
@@ -140,10 +140,16 @@ class ProfileController extends Controller
             'programme' => $request->input('programme'),
             'nationalIDCard' => $nationalIDCard,
             'recommendation' => $recommendation,
-        ]);
+        ];
 
-        $profile = $profile->refresh();
-        return response($profile, Response::HTTP_CREATED);
+        if ($request->input('created')) {
+            $profile['created_at'] = $request->input('created');
+        }
+
+        $result = Profile::create($profile);
+
+        $result = $result->refresh();
+        return response($result, Response::HTTP_CREATED);
     }
 
     /**

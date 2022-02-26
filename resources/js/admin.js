@@ -273,6 +273,7 @@ function initCandidatesTable() {
 function fetchAllUsers() {
   $smallLoading.show();
   axios.get('/users').then(function(res) {
+    updateUsersTable(res.data.data)
     if (res.data.next_page_url) {
       return fetchUsers(res.data.next_page_url)
     }
@@ -317,6 +318,7 @@ function fetchAllUsers() {
 function fetchAllCandidates() {
   $smallLoading.show();
   axios.get('/candidates').then(function(res) {
+    updateCandidatesTable(res.data.data)
     if (res.data.next_page_url) {
       return fetchCandidates(res.data.next_page_url)
     }
